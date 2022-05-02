@@ -18,11 +18,13 @@ def contract(name=None):
     if request.method == 'POST':
         contract = request.form['contract']
         if check_contract(contract) == True:
-            #info = get_contract_info(contract)
+            info = get_contract_info(contract)
+            '''
             info = [{'contract_address':contract,'contract_type':'ECR 721', 
             'collection': 'heheda', 'token_address': '0xffffffffffffffff',
             'name': 'test', 'owner_of': '0xaaaaaaaaaaaaaaaaaaaaaaa'
             },]
+            '''
             return render_template('output.html', result=info)
         else:
             return render_template('error.html')
@@ -34,11 +36,13 @@ def getcsv(name=None):
     if request.method == 'POST':
         contract = request.form['contract']
         if check_contract(contract) == True:
-            #info = get_contract_info(contract)
+            info = get_contract_info(contract)
+            '''
             info = [{'contract_address':contract,'contract_type':'ECR 721', 
             'collection': 'heheda', 'token_address': '0xffffffffffffffff',
             'name': 'test', 'owner_of': '0xaaaaaaaaaaaaaaaaaaaaaaa'
             },]
+            '''
             csv = change_to_csv(info)
     return Response(
         csv,
