@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/main.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+<body>
+<div class="container">
+   <h4 class="head">{{ result[0].contract_address }}</h4>
+   <form class="wrap_q" action="{{ url_for('nftools') }}">
+       <button type="submit" class="backButton" id="back_home">Home</button>    
+   </form>
+   <form class="wrap_r" method="POST" action="{{ url_for('getcsv') }}">
+    <input name="contract" type="hidden" value="{{ result[0].contract_address }}"></input>
+    <button type="submit" class="backButton_r" id="get_csv">Download</button>   
+   </form>
+<div class="container_p">
+    <table class="table" border="1">
+      <tr>
+        <td>Token Address</td>
+        <td>Owner Address</td>
+        <td>Collection</td>
+        <td>Name</td>
+        <td>Contract Type</td>
+      </tr>
+      {% for item in result %}
+      <tr>
+        <td class="AutoLine">{{ item.token_address }}</td>
+        <td class="AutoLine">{{ item.owner_of }}</td>
+        <td class="AutoLine">{{ item.collection }}</td>
+        <td class="AutoLine">{{ item.name }}</td>
+        <td class="AutoLine">{{ item.contract_type }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+</body>
