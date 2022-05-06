@@ -48,3 +48,4 @@ def get_contract_info(contract):
             itemdict['name'] = 'None'
         itemdict['owner_of'] = item['owner_of']
         reslist.append(itemdict)
+    return reslist
